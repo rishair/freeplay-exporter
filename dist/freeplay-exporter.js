@@ -3,17 +3,14 @@
  * This class implements the SpanExporter interface and provides support for
  * short-lived environments like Vercel Cloud Functions.
  */
-class FreeplayExporter {
+export class FreeplayExporter {
     /**
      * Constructs a new FreeplayExporter instance.
-     * @param {string} baseUrl - The base URL of the Freeplay API.
-     * @param {string} projectId - The Freeplay project ID.
-     * @param {string} apiKey - The API key for authentication.
-     * @param {string} environment - The environment (e.g., 'prod', 'dev').
+     * @param {FreeplayConfig} config - Configuration for the exporter.
      */
     constructor(config) {
         this.pendingExports = [];
-        this.baseUrl = config.baseUrl;
+        this.baseUrl = config.baseUrl || "https://app.freeplay.ai/";
         this.projectId = config.projectId;
         this.apiKey = config.apiKey;
         this.environment = config.environment;
@@ -49,6 +46,7 @@ class FreeplayExporter {
     }
     /**
      * Exports an array of spans to the Freeplay API.
+     * This implementation ignores the instrumentationScope property for backward compatibility.
      * @param {ReadableSpan[]} spans - Array of ReadableSpan objects from OpenTelemetry.
      * @param {(result: ExportResult) => void} resultCallback - Callback to report export success or failure.
      */
@@ -170,4 +168,3 @@ class FreeplayExporter {
         this.pendingExports = [];
     }
 }
-export { FreeplayExporter };

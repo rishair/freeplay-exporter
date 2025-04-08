@@ -1,6 +1,6 @@
 {
   "name": "freeplay-exporter",
-  "version": "1.0.0",
+  "version": "0.1.0-alpha.1",
   "description": "An OpenTelemetry exporter for sending telemetry data to Freeplay",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -14,8 +14,8 @@
   "author": "Your Name",
   "license": "MIT",
   "dependencies": {
-    "@opentelemetry/core": "^1.21.0",
-    "@opentelemetry/sdk-trace-base": "^2.0.0"
+    "@opentelemetry/core": "2.0.0",
+    "@opentelemetry/sdk-trace-base": "2.0.0"
   },
   "devDependencies": {
     "@types/jest": "^29.5.14",

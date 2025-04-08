@@ -1,10 +1,30 @@
 import { SpanExporter, ReadableSpan } from "@opentelemetry/sdk-trace-base";
 import { ExportResult } from "@opentelemetry/core";
 
-interface FreeplayConfig {
-  baseUrl: string;
+/**
+ * Configuration for the FreeplayExporter.
+ */
+export interface FreeplayConfig {
+  /**
+   * The base URL of the Freeplay API.
+   * Defaults to "https://app.freeplay.ai/" if not specified.
+   */
+  baseUrl?: string;
+
+  /**
+   * The Freeplay project ID to associate the telemetry data with.
+   */
   projectId: string;
+
+  /**
+   * The API key for authentication with the Freeplay API.
+   */
   apiKey: string;
+
+  /**
+   * The environment (e.g., 'prod', 'dev', 'staging') where the telemetry is generated.
+   * Used to categorize telemetry data within Freeplay.
+   */
   environment: string;
 }
 
@@ -13,7 +33,7 @@ interface FreeplayConfig {
  * This class implements the SpanExporter interface and provides support for
  * short-lived environments like Vercel Cloud Functions.
  */
-class FreeplayExporter implements SpanExporter {
+export class FreeplayExporter implements SpanExporter {
   private baseUrl: string;
   private projectId: string;
   private apiKey: string;
@@ -22,13 +42,10 @@ class FreeplayExporter implements SpanExporter {
 
   /**
    * Constructs a new FreeplayExporter instance.
-   * @param {string} baseUrl - The base URL of the Freeplay API.
-   * @param {string} projectId - The Freeplay project ID.
-   * @param {string} apiKey - The API key for authentication.
-   * @param {string} environment - The environment (e.g., 'prod', 'dev').
+   * @param {FreeplayConfig} config - Configuration for the exporter.
    */
   constructor(config: FreeplayConfig) {
-    this.baseUrl = config.baseUrl;
+    this.baseUrl = config.baseUrl || "https://app.freeplay.ai/";
     this.projectId = config.projectId;
     this.apiKey = config.apiKey;
     this.environment = config.environment;
@@ -70,6 +87,7 @@ class FreeplayExporter implements SpanExporter {
 
   /**
    * Exports an array of spans to the Freeplay API.
+   * This implementation ignores the instrumentationScope property for backward compatibility.
    * @param {ReadableSpan[]} spans - Array of ReadableSpan objects from OpenTelemetry.
    * @param {(result: ExportResult) => void} resultCallback - Callback to report export success or failure.
    */
@@ -216,5 +234,3 @@ class FreeplayExporter implements SpanExporter {
     this.pendingExports = [];
   }
 }
-
-export { FreeplayExporter };
