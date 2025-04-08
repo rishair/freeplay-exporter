@@ -21,7 +21,7 @@ const { FreeplayExporter } = require('freeplay-exporter');
 
 const provider = new NodeTracerProvider();
 const exporter = new FreeplayExporter({
-    baseUrl: 'https://api.freeplay.ai',
+    baseUrl: 'https://app.freeplay.ai',
     projectId: 'your-project-id',
     apiKey: 'your-api-key',
     environment: 'production'
