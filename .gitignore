@@ -6,8 +6,6 @@ package-lock.json
 yarn.lock
 
 # Build output
-dist/
-*.tgz
 
 # Logs
 logs/
