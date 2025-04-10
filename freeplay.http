@@ -1,0 +1,27 @@
+POST https://app.freeplay.ai/api/v2/projects/6df0a0a4-5c9b-41de-9387-3b846071f3ef/sessions/a903c15e-2f0f-4ce4-b743-4c87d0c64918/completions
+Content-Type: application/json
+Authorization: Bearer fp-700ac0b1-235a-4e07-9154-8d3ec3ef2b36_cf366019-f98a-482c-ba4b-d4a4f780dda6
+
+{
+  "messages": 
+  [
+    {
+      "role": "system",
+      "content": "You are a helpful assistant that can answer questions and help with tasks."
+    },
+    {
+      "role": "user",
+      "content": "What is the capital of the moon?"
+    },
+    {
+      "role": "assistant",
+      "content": "The capital of the moon is the moon."
+    }
+  ],
+  "inputs": {
+    "my_value": "my value"
+  },
+  "prompt_info": {
+    "prompt_template_version_id": "a9a109f0-affc-4302-916b-e8b4addfeb15"
+  }
+}

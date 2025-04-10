@@ -10,7 +10,7 @@ export class FreeplayExporter {
      */
     constructor(config) {
         this.pendingExports = [];
-        this.baseUrl = config.baseUrl || "https://app.freeplay.ai/";
+        this.baseUrl = config.baseUrl || "https://app.freeplay.ai/api/v2";
         this.projectId = config.projectId;
         this.apiKey = config.apiKey;
         this.environment = config.environment;
